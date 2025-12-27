@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOYNEXTDOOR 入坑指南 | Who's there? BND!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8fafc;
+        }
+
+        .bnd-blue { color: #4dabf7; }
+        .bg-bnd-blue { background-color: #4dabf7; }
+        .bnd-gradient {
+            background: linear-gradient(135deg, #a5d8ff 0%, #ffffff 100%);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+        .card-hover:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 門扉旋轉特效 */
+        .door-container { perspective: 1000px; }
+        .door-icon {
+            transition: transform 0.6s ease;
+            transform-origin: left;
+            z-index: 20;
+        }
+        .door-container:hover .door-icon {
+            transform: rotateY(-115deg);
+        }
+
+        /* Modal 動畫 */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- 導覽列 -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-lg border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="font-bold text-2xl bnd-blue tracking-tighter flex items-center">
+                <i class="fa-solid fa-door-open mr-2"></i>BOYNEXTDOOR
+            </div>
+            <div class="hidden md:flex space-x-8 font-bold text-sm text-slate-500">
+                <a href="#home" class="hover:text-blue-500 transition-colors uppercase tracking-widest">首頁</a>
+                <a href="#about" class="hover:text-blue-500 transition-colors uppercase tracking-widest">關於團體</a>
+                <a href="#members" class="hover:text-blue-500 transition-colors uppercase tracking-widest">成員介紹</a>
+                <a href="#variety" class="hover:text-blue-500 transition-colors uppercase tracking-widest">WHAT DOOR!</a>
+            </div>
+            <a href="https://www.instagram.com/boynextdoor_official?igsh=MTlnejE1djFuc3kzNQ==" target="_blank" class="bg-bnd-blue text-white px-4 py-2 rounded-full text-xs font-bold hover:scale-105 transition-all">
+                FOLLOW IG
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="min-h-screen pt-16 flex flex-col justify-center items-center text-center bnd-gradient px-4 relative overflow-hidden">
+        <div class="z-10 animate-fade-in">
+            <div class="door-container relative w-36 h-48 bg-blue-100 border-4 border-white rounded-t-full mx-auto mb-10 shadow-inner flex items-center justify-center">
+                <div class="door-icon absolute inset-0 bg-white border-2 border-blue-200 rounded-t-full shadow-lg flex items-center justify-end p-3">
+                    <div class="w-4 h-4 bg-yellow-400 rounded-full"></div>
+                </div>
+                <div class="text-center">
+                    <i class="fa-solid fa-heart text-4xl text-blue-400 mb-2 animate-bounce"></i>
+                    <p class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Onedoor</p>
+                </div>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black mb-4 tracking-tight text-slate-900 italic">Who's there?</h1>
+            <h2 class="text-6xl md:text-9xl font-black bnd-blue mb-8">BOYNEXTDOOR</h2>
+            <p class="max-w-2xl mx-auto text-slate-500 text-lg md:text-xl mb-10 font-medium leading-relaxed">
+                「來自隔壁鄰居家的男孩們」<br>
+                用最真誠、自然的方式，唱出屬於我們的青春故事。
+            </p>
+            <a href="#about" class="bg-slate-900 text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition-all shadow-xl">
+                開啟這扇門 <i class="fa-solid fa-arrow-down ml-2"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Section 1: About Group -->
+    <section id="about" class="py-24 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4 italic tracking-widest">ABOUT THE GROUP</h2>
+                <div class="w-20 h-1.5 bg-blue-500 mx-auto rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="bg-blue-50 p-10 rounded-[3rem] border border-blue-100 shadow-inner">
+                    <h3 class="text-2xl font-bold mb-4 bnd-blue">我們是誰？</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        BOYNEXTDOOR (BND) 是由饒舌鬼才 **ZICO** 親自操刀，HYBE 旗下子公司 **KOZ Entertainment** 於 2023 年 5 月 30 日推出的六人男團。
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        團名意指「鄰家男孩」，象徵成員們像隔壁家的男孩一樣，以最親近且坦誠的方式與大眾溝通。他們的音樂融合了嘻哈、日常對話風格與強大的現場表演力。
+                    </p>
+                </div>
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4 p-4 bg-white border border-slate-100 rounded-2xl shadow-sm">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center text-xl font-bold">1</div>
+                        <div>
+                            <h4 class="font-bold">出道日期</h4>
+                            <p class="text-sm text-slate-500">2023 年 5 月 30 日</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 p-4 bg-white border border-slate-100 rounded-2xl shadow-sm">
+                        <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center text-xl font-bold">2</div>
+                        <div>
+                            <h4 class="font-bold">粉絲名稱</h4>
+                            <p class="text-sm text-slate-500">ONEDOOR (唯一的門 / 萬物之門)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 p-4 bg-white border border-slate-100 rounded-2xl shadow-sm">
+                        <div class="w-12 h-12 bg-yellow-100 text-yellow-500 rounded-full flex items-center justify-center text-xl font-bold">3</div>
+                        <div>
+                            <h4 class="font-bold">代表標誌</h4>
+                            <p class="text-sm text-slate-500">門、房子的輪廓</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Member Profiles -->
+    <section id="members" class="py-24 px-6 bg-slate-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-black mb-4 italic tracking-widest uppercase">Member Profiles</h2>
+                <div class="w-16 h-1.5 bg-blue-500 mx-auto rounded-full"></div>
+                <p class="mt-6 text-slate-500 font-medium">點擊成員格子看完整個人檔案</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- SUNGHO -->
+                <div onclick="openModal('sungho')" class="card-hover bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm relative group">
+                    <div class="h-80 overflow-hidden relative bg-blue-50">
+                        <img src="sungho.png" alt="成淏 SUNGHO" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="hidden w-full h-full text-6xl text-blue-200 flex items-center justify-center group-hover:scale-110 transition-all duration-700">🐱</div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase">Vocal</div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-black mb-1 italic">成淏 SUNGHO</h3>
+                        <p class="text-blue-500 font-bold text-sm tracking-widest uppercase">肩膀流氓 🐱</p>
+                    </div>
+                </div>
+
+                <!-- RIWOO -->
+                <div onclick="openModal('riwoo')" class="card-hover bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm relative group">
+                    <div class="h-80 overflow-hidden relative bg-blue-100">
+                        <img src="riwoo.png" alt="李相赫 RIWOO" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="hidden w-full h-full text-6xl text-blue-200 flex items-center justify-center group-hover:scale-110 transition-all duration-700">🐉</div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase">Dance</div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-black mb-1 italic">RIWOO</h3>
+                        <p class="text-blue-500 font-bold text-sm tracking-widest uppercase">舞蹈機器 🦾</p>
+                    </div>
+                </div>
+
+                <!-- JAEHYUN -->
+                <div onclick="openModal('jaehyun')" class="card-hover bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm relative group">
+                    <div class="h-80 overflow-hidden relative bg-blue-50">
+                        <img src="jeahyun.png" alt="宰鉉 JAEHYUN" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="hidden w-full h-full text-6xl text-blue-200 flex items-center justify-center group-hover:scale-110 transition-all duration-700">🐶</div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase">Leader</div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-black mb-1 italic">宰鉉 JAEHYUN</h3>
+                        <p class="text-blue-500 font-bold text-sm tracking-widest uppercase">熱血金毛 🐶</p>
+                    </div>
+                </div>
+
+                <!-- TAESAN -->
+                <div onclick="openModal('taesan')" class="card-hover bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm relative group">
+                    <div class="h-80 overflow-hidden relative bg-slate-100">
+                        <img src="taesan.png" alt="韓泰山 TAESAN" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="hidden w-full h-full text-6xl text-slate-300 flex items-center justify-center group-hover:scale-110 transition-all duration-700">⛰️</div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase">Rapper</div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-black mb-1 italic">泰山 TAESAN</h3>
+                        <p class="text-blue-500 font-bold text-sm tracking-widest uppercase">感性工匠 🖋️</p>
+                    </div>
+                </div>
+
+                <!-- LEEHAN -->
+                <div onclick="openModal('leehan')" class="card-hover bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm relative group">
+                    <div class="h-80 overflow-hidden relative bg-blue-50">
+                        <img src="leehan.png" alt="金桐儇 LEEHAN" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="hidden w-full h-full text-6xl text-blue-300 flex items-center justify-center group-hover:scale-110 transition-all duration-700">🐟</div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase">Visual</div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-black mb-1 italic">李漢 LEEHAN</h3>
+                        <p class="text-blue-500 font-bold text-sm tracking-widest uppercase">水族王子 🫧</p>
+                    </div>
+                </div>
+
+                <!-- WOONHAK -->
+                <div onclick="openModal('woonhak')" class="card-hover bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm relative group">
+                    <div class="h-80 overflow-hidden relative bg-pink-50">
+                        <img src="woonhak.png" alt="金雲鶴 WOONHAK" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="hidden w-full h-full text-6xl text-pink-200 flex items-center justify-center group-hover:scale-110 transition-all duration-700">🧸</div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase">Maknae</div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-black mb-1 italic">雲鶴 WOONHAK</h3>
+                        <p class="text-blue-500 font-bold text-sm tracking-widest uppercase">快樂小熊 🐻</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Milestones Timeline -->
+    <section class="py-24 px-6 bg-white overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4 italic tracking-widest">MILESTONES</h2>
+                <div class="w-20 h-1.5 bg-blue-200 mx-auto rounded-full"></div>
+            </div>
+            <div class="space-y-12 relative">
+                <!-- 2023 -->
+                <div class="relative pl-12 timeline-item">
+                    <div class="absolute left-0 top-1 w-10 h-10 bg-blue-500 rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center text-white text-xs font-bold">2023</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3 italic text-blue-500 tracking-tighter">正式出道 & 首個一位</h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            以《WHO!》驚艷出道。隨後發行《WHY..》，主打歌〈But Sometimes〉在音樂節目奪下首個一位，證明了自製作實力。
+                        </p>
+                    </div>
+                </div>
+                <!-- 2024 -->
+                <div class="relative pl-12 timeline-item">
+                    <div class="absolute left-0 top-1 w-10 h-10 bg-blue-400 rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center text-white text-xs font-bold">2024</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3 italic text-blue-400 tracking-tighter">全球擴張 & 百萬銷量</h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            發行《HOW?》，主打〈Earth, Wind & Fire〉的高速 Rap 引發全球熱潮。同年《19.99》累積銷量突破百萬，確立領頭羊地位。
+                        </p>
+                    </div>
+                </div>
+                <!-- 2025 -->
+                <div class="relative pl-12">
+                    <div class="absolute left-0 top-1 w-10 h-10 bg-slate-900 rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center text-white text-xs font-bold">2025</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3 italic text-slate-900 tracking-tighter">世界巡演 & 頂尖殊榮</h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            展開全球巡迴演唱會。憑藉《The Action》橫掃 MAMA 多項大獎，並在 Billboard 取得驚人成績。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Variety Section (WHAT DOOR!) -->
+    <section id="variety" class="py-24 px-6 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-blue-400 font-black tracking-[0.3em] text-xs uppercase italic">Recommendation</span>
+                <h2 class="text-4xl font-black mt-2 italic tracking-widest uppercase">WHAT DOOR! 必看推薦</h2>
+                <div class="w-20 h-1.5 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
+                <p class="mt-6 text-slate-400 max-w-xl mx-auto font-medium">還在猶豫要看哪一集嗎？這幾集絕對是推坑神器，讓你瞬間愛上他們的性格！</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Ep 1 -->
+                <div class="bg-white/5 backdrop-blur-md rounded-[2.5rem] p-10 border border-white/10 flex flex-col h-full hover:bg-white/10 transition-all">
+                    <div class="mb-6 flex items-center justify-between">
+                        <i class="fa-solid fa-ghost text-red-400 text-3xl"></i>
+                        <span class="text-[10px] font-black border border-red-400 text-red-400 px-3 py-1 rounded-full italic">納涼特輯</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 italic">嚇到靈魂出竅系列</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-8 flex-grow italic">
+                        EP.07-08。全員勇闖鬼屋！看成淏如何「維持冷靜」到崩潰，以及忙內雲鶴驚人的逃跑速度。
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=A2kR_T_B9jM" target="_blank" class="w-full bg-red-600 text-white text-center py-4 rounded-2xl font-bold hover:bg-red-700 transition-all shadow-lg shadow-red-900/20">
+                        立即觀看 (YouTube)
+                    </a>
+                </div>
+
+                <!-- Ep 2 -->
+                <div class="bg-white/5 backdrop-blur-md rounded-[2.5rem] p-10 border border-white/10 flex flex-col h-full hover:bg-white/10 transition-all">
+                    <div class="mb-6 flex items-center justify-between">
+                        <i class="fa-solid fa-pizza-slice text-yellow-400 text-3xl"></i>
+                        <span class="text-[10px] font-black border border-yellow-400 text-yellow-400 px-3 py-1 rounded-full italic">吃貨大戰</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 italic">外食挑戰大作戰</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-8 flex-grow italic">
+                        EP.11-12。為了吃美食展現極致團結（？）與搞笑。看宰鉉隊長如何帶領大家在小遊戲中獲取食材。
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=0hX1FqYv0jI" target="_blank" class="w-full bg-yellow-500 text-white text-center py-4 rounded-2xl font-bold hover:bg-yellow-600 transition-all shadow-lg shadow-yellow-900/20">
+                        立即觀看 (YouTube)
+                    </a>
+                </div>
+
+                <!-- Ep 3 -->
+                <div class="bg-white/5 backdrop-blur-md rounded-[2.5rem] p-10 border border-white/10 flex flex-col h-full hover:bg-white/10 transition-all">
+                    <div class="mb-6 flex items-center justify-between">
+                        <i class="fa-solid fa-comments text-blue-400 text-3xl"></i>
+                        <span class="text-[10px] font-black border border-blue-400 text-blue-400 px-3 py-1 rounded-full italic">辯論特輯</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 italic">TMT 系列嘴砲大賽</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-8 flex-grow italic">
+                        當六個「E 人」聚在一起。從毫無意義的問題爭論到面紅耳赤。展現驚人的邏輯（與歪理）以及實力派口才。
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=l_8Yv2B3p2E" target="_blank" class="w-full bg-blue-500 text-white text-center py-4 rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-lg shadow-blue-900/20">
+                        立即觀看 (YouTube)
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+    </section>
+
+    <!-- Modal (Pop-up detailed introduction) -->
+    <div id="memberModal" class="fixed inset-0 z-[100] hidden">
+        <div class="modal-overlay absolute inset-0" onclick="closeModal()"></div>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="modal-content relative bg-white w-full max-w-3xl rounded-[3rem] overflow-hidden shadow-2xl scale-95 opacity-0">
+                <button onclick="closeModal()" class="absolute top-6 right-6 z-50 bg-slate-100 w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-200 transition-all">
+                    <i class="fa-solid fa-xmark text-slate-500"></i>
+                </button>
+                <div class="flex flex-col md:flex-row h-full">
+                    <div class="w-full md:w-5/12 h-64 md:h-auto bg-blue-50" id="modalImg"></div>
+                    <div class="w-full md:w-7/12 p-10 overflow-y-auto max-h-[70vh] md:max-h-[85vh]">
+                        <div class="mb-6">
+                            <span id="modalRole" class="text-[10px] font-black bg-blue-100 text-blue-600 px-3 py-1 rounded-full uppercase tracking-widest">ROLE</span>
+                            <h3 id="modalName" class="text-4xl font-black mt-3 italic text-slate-900">姓名</h3>
+                            <p id="modalEngName" class="text-sm font-bold text-slate-300 mt-1 uppercase tracking-widest">ENG NAME</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-black text-slate-900 border-l-4 border-blue-500 pl-3 mb-2 italic uppercase tracking-tighter">About</h4>
+                                <p id="modalAbout" class="text-sm text-slate-600 leading-relaxed"></p>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-slate-900 border-l-4 border-blue-500 pl-3 mb-2 italic uppercase tracking-tighter">Personality</h4>
+                                <p id="modalPersonality" class="text-sm text-slate-600 leading-relaxed"></p>
+                            </div>
+                            <div class="bg-blue-50 p-6 rounded-[2rem] border border-blue-100 shadow-sm">
+                                <h4 class="text-[10px] font-black text-blue-500 uppercase mb-3 tracking-[0.2em]">Fun Facts / TMI</h4>
+                                <ul id="modalTmi" class="text-xs text-slate-600 space-y-3"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 bg-white border-t border-slate-100 text-center">
+        <h3 class="text-2xl font-black mb-8 italic tracking-widest uppercase">WHO'S THERE? ONEDOOR!</h3>
+        <div class="flex justify-center space-x-6 mb-12 text-2xl">
+            <a href="https://www.instagram.com/boynextdoor_official?igsh=MTlnejE1djFuc3kzNQ==" target="_blank" class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all shadow-sm"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@BOYNEXTDOOR_official" target="_blank" class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center hover:bg-red-600 hover:text-white transition-all shadow-sm"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://twitter.com/BOYNEXTDOOR_KOZ" target="_blank" class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center hover:bg-blue-400 hover:text-white transition-all shadow-sm"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+        <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.5em]">© 2025 BOYNEXTDOOR FANSITE | UNOFFICIAL</p>
+    </footer>
+
+    <script>
+        const memberData = {
+            sungho: {
+                name: "朴成淏", engName: "SUNGHO", role: "Main Vocalist",
+                about: "擁有穿透力極強的高音，是團內的實力主唱。雖然長相清冷，但其實是個溫暖且細心的大哥。",
+                personality: "反差萌代表。外表是冷都男（冷漠的都市男子），私下卻非常愛撒嬌。因為肩膀很寬而被封為「肩膀流氓」。",
+                tmi: ["是團內最愛乾淨、潔癖排名第一的成員。", "擁有貓咪般的魅力與驚人的核心力量。", "高音爆發力讓製作人 ZICO 也讚不絕口。"],
+                img: "image_1.png", emoji: "🐱"
+            },
+            riwoo: {
+                name: "李相赫", engName: "RIWOO", role: "Main Dancer",
+                about: "BOYNEXTDOOR 的舞蹈靈魂。動作極度乾淨俐落，對舞步細節的掌控力驚人。",
+                personality: "比較內向（I人）的可愛鬼。在舞台上是舞蹈機器，台下卻是安靜且害羞的存在，擁有一種純真的幽默感。",
+                tmi: ["跳舞時會散發出平時看不到的強大氣場。", "擁有一雙非常有魅力的單眼皮眼睛。", "非常專注於舞台表演，自我要求極高。"],
+                img: "riwoo.png", emoji: "🐉"
+            },
+            jaehyun: {
+                name: "明宰鉉", engName: "JAEHYUN", role: "Leader / Rapper",
+                about: "全能型隊長。負責大部分詞曲創作，是團內的創作核心與「能量發電機」。",
+                personality: "標誌性的黃金獵犬性格（ENFP），對音樂極度熱情，對成員與粉絲則充滿了無限愛意。舞台瘋狂且多變。",
+                tmi: ["曾擔任《人氣歌謠》的 MC。", "饒舌速度極快且咬字清晰，節奏感滿分。", "擁有無窮無盡的好奇心與創造力。"],
+                img: "image.png", emoji: "🐶"
+            },
+            taesan: {
+                name: "韓泰山", engName: "TAESAN", role: "Rapper / Vocal",
+                about: "獨特的嗓音與極強的視覺氛圍。在詞曲創作上非常有主見，是 BND 音樂個性的核心。",
+                personality: "感性工匠。對美學、穿搭與視覺設計有很深的見解。雖然外表酷帥，其實內心非常溫柔且熱愛思考。",
+                tmi: ["非常熱愛閱讀與詩歌創作。", "時尚感極佳，是隊內的穿搭指標。", "擁有一把辨識度極高、磁性十足的嗓音。"],
+                img: "taesan.png", emoji: "⛰️"
+            },
+            leehan: {
+                name: "金桐儇", engName: "LEEHAN", role: "Vocalist / Visual",
+                about: "如王子般的精緻長相。聲音溫潤如水，是團體中提供平靜與安慰的力量。",
+                personality: "優雅且平穩。對魚類有著驚人的執著與愛好。性格像大海一樣包容，總能細心地察覺成員的需求。",
+                tmi: ["在宿舍養了很多魚，是著名的「魚類狂熱者」。", "視覺效果被稱讚像漫畫走出來的男子。", "對大自然與所有生命都充滿敬畏。"],
+                img: "leehan.png", emoji: "🐟"
+            },
+            woonhak: {
+                name: "金雲鶴", engName: "WOONHAK", role: "Maknae / Vocal",
+                about: "最強忙內。年紀雖小但才華洋溢，笑容充滿感染力，舞台台風非常穩健。",
+                personality: "快樂小熊（🧸）。擁有最燦爛的笑容，在舞台上是個小天才，私下則是哥哥們最寵愛的「活力素」。",
+                tmi: ["曾是《人氣歌謠》史上最年輕的男性 MC 之一。", "作曲實力驚人，小小年紀便參與多首主打與收錄曲製作。", "充滿正能量，是隊內的陽光來源。"],
+                img: "woonhak.png", emoji: "🧸"
+            }
+        };
+
+        function openModal(key) {
+            const data = memberData[key];
+            const modal = document.getElementById('memberModal');
+            const content = modal.querySelector('.modal-content');
+            
+            document.getElementById('modalName').innerText = data.name;
+            document.getElementById('modalEngName').innerText = data.engName;
+            document.getElementById('modalRole').innerText = data.role;
+            document.getElementById('modalAbout').innerText = data.about;
+            document.getElementById('modalPersonality').innerText = data.personality;
+            
+            const tmiList = document.getElementById('modalTmi');
+            tmiList.innerHTML = '';
+            data.tmi.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fa-solid fa-star mr-2 text-blue-400"></i>${item}`;
+                tmiList.appendChild(li);
+            });
+
+            const imgContainer = document.getElementById('modalImg');
+            if (data.img) {
+                imgContainer.innerHTML = `<img src="${data.img}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"><div class="hidden w-full h-full text-7xl flex items-center justify-center bg-blue-50">${data.emoji}</div>`;
+            } else {
+                imgContainer.innerHTML = `<div class="w-full h-full text-7xl flex items-center justify-center bg-blue-50">${data.emoji}</div>`;
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('memberModal');
+            const content = modal.querySelector('.modal-content');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    </script>
+</body>
+</html>
