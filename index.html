@@ -415,7 +415,7 @@
         <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
     </section>
 
-    <!-- Modal (Pop-up detailed introduction) -->
+  <!-- Modal (Pop-up detailed introduction) -->
     <div id="memberModal" class="fixed inset-0 z-[100] hidden">
         <div class="modal-overlay absolute inset-0" onclick="closeModal()"></div>
         <div class="flex items-center justify-center min-h-screen p-4">
@@ -427,7 +427,13 @@
                     <div class="w-full md:w-5/12 h-64 md:h-auto bg-blue-50" id="modalImg"></div>
                     <div class="w-full md:w-7/12 p-10 overflow-y-auto max-h-[70vh] md:max-h-[85vh]">
                         <div class="mb-6">
-                            <span id="modalRole" class="text-[10px] font-black bg-blue-100 text-blue-600 px-3 py-1 rounded-full uppercase tracking-widest">ROLE</span>
+                            <div class="flex items-center justify-between">
+                                <span id="modalRole" class="text-[10px] font-black bg-blue-100 text-blue-600 px-3 py-1 rounded-full uppercase tracking-widest">ROLE</span>
+                                <!-- 新增名場面按鈕 -->
+                                <a id="modalClip" href="#" target="_blank" class="text-[10px] font-bold bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-full transition-colors flex items-center shadow-md">
+                                    <i class="fa-brands fa-youtube mr-1"></i> 觀看入坑名場面
+                                </a>
+                            </div>
                             <h3 id="modalName" class="text-4xl font-black mt-3 italic text-slate-900">姓名</h3>
                             <p id="modalEngName" class="text-sm font-bold text-slate-300 mt-1 uppercase tracking-widest">ENG NAME</p>
                         </div>
