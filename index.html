@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap');
         
         body {
             font-family: 'Noto Sans TC', sans-serif;
@@ -41,7 +41,7 @@
             transform: rotateY(-115deg);
         }
 
- /* Modal 動畫 */
+        /* Modal 動畫 */
         .modal-overlay {
             background-color: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(8px);
@@ -72,7 +72,8 @@
             right: 2rem;
             z-index: 99;
             background: white;
-            padding: 0.75rem;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             display: flex;
@@ -88,18 +89,26 @@
             color: white;
         }
         .music-player.playing i {
-            animation: rotate 3s linear infinite;
+            animation: rotate 4s linear infinite;
         }
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+
+        /* 自定義 Fade In */
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="text-slate-800">
 
- <!-- 背景音樂 -->
-    <!-- 提示：你可以將 src 換成 BOYNEXTDOOR 的歌曲檔案，例如 "OneAndOnly.mp3" -->
+    <!-- 背景音樂 -->
     <audio id="bgMusic" loop>
         <source src="One and Only.mp3" type="audio/mpeg">
     </audio>
@@ -121,7 +130,7 @@
                 <a href="#members" class="hover:text-blue-500 transition-colors uppercase tracking-widest">成員介紹</a>
                 <a href="#variety" class="hover:text-blue-500 transition-colors uppercase tracking-widest">WHAT DOOR!</a>
             </div>
-            <a href="https://www.instagram.com/boynextdoor_official?igsh=MTlnejE1djFuc3kzNQ==" target="_blank" class="bg-bnd-blue text-white px-4 py-2 rounded-full text-xs font-bold hover:scale-105 transition-all">
+            <a href="https://www.instagram.com/boynextdoor_official" target="_blank" class="bg-bnd-blue text-white px-4 py-2 rounded-full text-xs font-bold hover:scale-105 transition-all">
                 FOLLOW IG
             </a>
         </div>
@@ -247,7 +256,7 @@
                 <!-- TAESAN -->
                 <div onclick="openModal('taesan')" class="card-hover bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm relative group">
                     <div class="h-80 overflow-hidden relative bg-slate-100">
-                        <img src="taesan.png" alt="韓泰山 TAESAN" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <img src="taesan.png" alt="漢泰山 TAESAN" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                         <div class="hidden w-full h-full text-6xl text-slate-300 flex items-center justify-center group-hover:scale-110 transition-all duration-700">⛰️</div>
                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase">Rapper</div>
                     </div>
@@ -327,14 +336,15 @@
             </div>
         </div>
     </section>
- <!-- Section 4: Variety Section (WHAT DOOR!) - CORRECTED LINKS -->
+
+    <!-- Section 4: Variety Section (WHAT DOOR!) -->
     <section id="variety" class="py-24 px-6 bg-slate-900 text-white relative overflow-hidden">
         <div class="max-w-6xl mx-auto relative z-10">
             <div class="text-center mb-16">
                 <span class="text-blue-400 font-black tracking-[0.3em] text-xs uppercase italic">Recommendation</span>
                 <h2 class="text-4xl font-black mt-2 italic tracking-widest uppercase">WHAT DOOR! 必看推薦</h2>
                 <div class="w-20 h-1.5 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
-                <p class="mt-6 text-slate-400 max-w-xl mx-auto font-medium">官方綜藝《WHAT DOOR!》是認識他們性格的最佳途徑。以下為粉絲最推集數：</p>
+                <p class="mt-6 text-slate-400 max-w-xl mx-auto font-medium">官方綜藝《WHAT DOOR!》是認識他們性格的最佳途徑。</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -342,44 +352,44 @@
                 <div class="bg-white/5 backdrop-blur-md rounded-[2.5rem] p-10 border border-white/10 flex flex-col h-full hover:bg-white/10 transition-all">
                     <div class="mb-6 flex items-center justify-between">
                         <i class="fa-solid fa-ghost text-red-400 text-3xl"></i>
-                        <span class="text-[10px] font-black border border-red-400 text-red-400 px-3 py-1 rounded-full italic">恐怖特輯</span>
+                        <span class="text-[10px] font-black border border-red-400 text-red-400 px-3 py-1 rounded-full italic">中秋特輯</span>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 italic"> 中秋節特輯！龜兔賽跑大賽</h4>
+                    <h4 class="text-xl font-bold mb-4 italic">龜兔賽跑大賽</h4>
                     <p class="text-sm text-slate-400 leading-relaxed mb-8 flex-grow italic">
                         BND 的綜藝之神降臨。音量爆炸注意！龜兔賽跑能玩出什麼火花？爆笑不斷。
                     </p>
-                    <a href="https://www.youtube.com/watch?v=hS3vxhsvUos&list=PLKy8RfJEl50v7FbcwulAgvFjmoBZxOw7P&index=18" target="_blank" rel="noopener noreferrer" class="w-full bg-red-600 text-white text-center py-4 rounded-2xl font-bold hover:bg-red-700 transition-all shadow-lg shadow-red-900/20">
+                    <a href="https://www.youtube.com/watch?v=hS3vxhsvUos" target="_blank" class="w-full bg-red-600 text-white text-center py-4 rounded-2xl font-bold hover:bg-red-700 transition-all shadow-lg shadow-red-900/20">
                         點擊觀看 EP.33
                     </a>
                 </div>
 
-                <!-- Ep 2: Food MT -->
+                <!-- Ep 2: Ghost House -->
                 <div class="bg-white/5 backdrop-blur-md rounded-[2.5rem] p-10 border border-white/10 flex flex-col h-full hover:bg-white/10 transition-all">
                     <div class="mb-6 flex items-center justify-between">
                         <i class="fa-solid fa-car text-yellow-400 text-3xl"></i>
-                        <span class="text-[10px] font-black border border-yellow-400 text-yellow-400 px-3 py-1 rounded-full italic">冬日小旅行</span>
+                        <span class="text-[10px] font-black border border-yellow-400 text-yellow-400 px-3 py-1 rounded-full italic">恐怖探險</span>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 italic">驚聲尖叫！鬼屋大探險 </h4>
+                    <h4 class="text-xl font-bold mb-4 italic">驚聲尖叫！鬼屋大探險</h4>
                     <p class="text-sm text-slate-400 leading-relaxed mb-8 flex-grow italic">
                         寶寶平常天不怕地不怕，最怕鬼屋～6人6個世界～宰鉉真的好萌啊！
                     </p>
-                    <a href="https://www.youtube.com/watch?v=nCkH3GnKPDI&list=PLKy8RfJEl50v7FbcwulAgvFjmoBZxOw7P&index=25" target="_blank" rel="noopener noreferrer" class="w-full bg-yellow-500 text-white text-center py-4 rounded-2xl font-bold hover:bg-yellow-600 transition-all shadow-lg shadow-yellow-900/20">
+                    <a href="https://www.youtube.com/watch?v=nCkH3GnKPDI" target="_blank" class="w-full bg-yellow-500 text-white text-center py-4 rounded-2xl font-bold hover:bg-yellow-600 transition-all shadow-lg shadow-yellow-900/20">
                         點擊觀看 EP.27
                     </a>
                 </div>
 
-                <!-- Ep 3: Season 2 Debate -->
+                <!-- Ep 3: Chef -->
                 <div class="bg-white/5 backdrop-blur-md rounded-[2.5rem] p-10 border border-white/10 flex flex-col h-full hover:bg-white/10 transition-all">
                     <div class="mb-6 flex items-center justify-between">
-                        <i class="fa-solid fa-comments text-blue-400 text-3xl"></i>
-                        <span class="text-[10px] font-black border border-blue-400 text-blue-400 px-3 py-1 rounded-full italic">第二季回歸</span>
+                        <i class="fa-solid fa-utensils text-blue-400 text-3xl"></i>
+                        <span class="text-[10px] font-black border border-blue-400 text-blue-400 px-3 py-1 rounded-full italic">手作美食</span>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 italic"> 型男大主廚？手作美食大對決</h4>
+                    <h4 class="text-xl font-bold mb-4 italic">型男大主廚大對決</h4>
                     <p class="text-sm text-slate-400 leading-relaxed mb-8 flex-grow italic">
                         看看鄰家男們或做出什麼料理？究竟是會煮還是不會煮呢？！釜山豬肉湯飯走味了嗎？！
                     </p>
-                    <a href="https://www.youtube.com/watch?v=ZjcYFoGdBFA&list=PLKy8RfJEl50v7FbcwulAgvFjmoBZxOw7P&index=38" target="_blank" rel="noopener noreferrer" class="w-full bg-blue-500 text-white text-center py-4 rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-lg shadow-blue-900/20">
-                        點擊觀看  EP.16
+                    <a href="https://www.youtube.com/watch?v=ZjcYFoGdBFA" target="_blank" class="w-full bg-blue-500 text-white text-center py-4 rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-lg shadow-blue-900/20">
+                        點擊觀看 EP.16
                     </a>
                 </div>
             </div>
@@ -427,7 +437,7 @@
     <footer class="py-16 px-6 bg-white border-t border-slate-100 text-center">
         <h3 class="text-2xl font-black mb-8 italic tracking-widest uppercase">WHO'S THERE? ONEDOOR!</h3>
         <div class="flex justify-center space-x-6 mb-12 text-2xl">
-            <a href="https://www.instagram.com/boynextdoor_official?igsh=MTlnejE1djFuc3kzNQ==" target="_blank" class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all shadow-sm"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.instagram.com/boynextdoor_official" target="_blank" class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all shadow-sm"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.youtube.com/@BOYNEXTDOOR_official" target="_blank" class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center hover:bg-red-600 hover:text-white transition-all shadow-sm"><i class="fa-brands fa-youtube"></i></a>
             <a href="https://twitter.com/BOYNEXTDOOR_KOZ" target="_blank" class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center hover:bg-blue-400 hover:text-white transition-all shadow-sm"><i class="fa-brands fa-twitter"></i></a>
         </div>
@@ -439,46 +449,64 @@
             sungho: {
                 name: "朴成淏", engName: "SUNGHO", role: "Main Vocalist",
                 about: "擁有穿透力極強的高音，是團內的實力主唱。雖然長相清冷，但其實是個溫暖且細心的大哥。",
-                personality: "反差萌代表。外表是冷都男（冷漠的都市男子），私下卻非常愛撒嬌。因為肩膀很寬而被封為「肩膀流氓」。",
+                personality: "反差萌代表。外表是冷都男，私下卻非常愛撒嬌。因為肩膀很寬而被封為「肩膀流氓」。",
                 tmi: ["是團內最愛乾淨、潔癖排名第一的成員。", "擁有貓咪般的魅力與驚人的核心力量。", "高音爆發力讓製作人 ZICO 也讚不絕口。"],
                 img: "sungho.png", emoji: "🐱"
             },
             riwoo: {
                 name: "李常赫", engName: "RIWOO", role: "Main Dancer",
                 about: "BOYNEXTDOOR 的舞蹈靈魂。動作極度乾淨俐落，對舞步細節的掌控力驚人。",
-                personality: "比較內向（I人）的可愛鬼。在舞台上是舞蹈機器，台下卻是安靜且害羞的存在，擁有一種純真的幽默感。",
+                personality: "比較內向（I人）的可愛鬼。在舞台上是舞蹈機器，台下卻是安靜且害羞的存在。",
                 tmi: ["跳舞時會散發出平時看不到的強大氣場。", "擁有一雙非常有魅力的單眼皮眼睛。", "非常專注於舞台表演，自我要求極高。"],
                 img: "riwoo.png", emoji: "🦦"
             },
             jaehyun: {
                 name: "明宰鉉", engName: "JAEHYUN", role: "Leader / Rapper",
                 about: "全能型隊長。負責大部分詞曲創作，是團內的創作核心與「能量發電機」。",
-                personality: "標誌性的黃金獵犬性格（ENFP），對音樂極度熱情，對成員與粉絲則充滿了無限愛意。舞台瘋狂且多變。",
+                personality: "標誌性的黃金獵犬性格（ENFP），對音樂極度熱情，對成員與粉絲充滿愛。舞台風格瘋狂且多變。",
                 tmi: ["曾擔任《人氣歌謠》的 MC。", "饒舌速度極快且咬字清晰，節奏感滿分。", "擁有無窮無盡的好奇心與創造力。"],
                 img: "jaehyun.png", emoji: "🐶"
             },
             taesan: {
                 name: "漢泰山", engName: "TAESAN", role: "Rapper / Vocal",
                 about: "獨特的嗓音與極強的視覺氛圍。在詞曲創作上非常有主見，是 BND 音樂個性的核心。",
-                personality: "感性工匠。對美學、穿搭與視覺設計有很深的見解。雖然外表酷帥，其實內心非常溫柔且熱愛思考。",
+                personality: "感性工匠。對美學、穿搭與視覺設計有深厚見解。外酷內溫，熱愛思考。",
                 tmi: ["非常熱愛閱讀與詩歌創作。", "時尚感極佳，是隊內的穿搭指標。", "擁有一把辨識度極高、磁性十足的嗓音。"],
                 img: "taesan.png", emoji: "⛰️"
             },
             leehan: {
                 name: "金桐儇", engName: "LEEHAN", role: "Vocalist / Visual",
                 about: "如王子般的精緻長相。聲音溫潤如水，是團體中提供平靜與安慰的力量。",
-                personality: "優雅且平穩。對魚類有著驚人的執著與愛好。性格像大海一樣包容，總能細心地察覺成員的需求。",
+                personality: "優雅且平穩。對魚類有著驚人的執著與愛好。性格像大海一樣包容。",
                 tmi: ["在宿舍養了很多魚，是著名的「魚類狂熱者」。", "視覺效果被稱讚像漫畫走出來的男子。", "對大自然與所有生命都充滿敬畏。"],
                 img: "Leehan1.png", emoji: "🐟"
             },
             woonhak: {
                 name: "金雲鶴", engName: "WOONHAK", role: "Maknae / Vocal",
                 about: "最強忙內。年紀雖小但才華洋溢，笑容充滿感染力，舞台台風非常穩健。",
-                personality: "快樂小熊（🧸）。擁有最燦爛的笑容，在舞台上是個小天才，私下則是哥哥們最寵愛的「活力素」。",
+                personality: "快樂小熊（🧸）。擁有最燦爛的笑容，在舞台上是個小天才，私下是哥哥們寵愛的活力素。",
                 tmi: ["曾是《人氣歌謠》史上最年輕的男性 MC 之一。", "作曲實力驚人，小小年紀便參與多首主打與收錄曲製作。", "充滿正能量，是隊內的陽光來源。"],
                 img: "woonhak1.png", emoji: "🧸"
             }
         };
+
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const icon = document.getElementById('musicIcon');
+            const control = document.getElementById('musicControl');
+            
+            if (music.paused) {
+                music.play().catch(() => console.log("播放被瀏覽器阻擋，請手動觸發"));
+                control.classList.add('playing');
+                icon.classList.remove('fa-compact-disc');
+                icon.classList.add('fa-pause');
+            } else {
+                music.pause();
+                control.classList.remove('playing');
+                icon.classList.add('fa-compact-disc');
+                icon.classList.remove('fa-pause');
+            }
+        }
 
         function openModal(key) {
             const data = memberData[key];
@@ -500,11 +528,10 @@
             });
 
             const imgContainer = document.getElementById('modalImg');
-            if (data.img) {
-                imgContainer.innerHTML = `<img src="${data.img}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"><div class="hidden w-full h-full text-7xl flex items-center justify-center bg-blue-50">${data.emoji}</div>`;
-            } else {
-                imgContainer.innerHTML = `<div class="w-full h-full text-7xl flex items-center justify-center bg-blue-50">${data.emoji}</div>`;
-            }
+            imgContainer.innerHTML = `
+                <img src="${data.img}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="hidden w-full h-full text-7xl flex items-center justify-center bg-blue-50">${data.emoji}</div>
+            `;
 
             modal.classList.remove('hidden');
             setTimeout(() => {
